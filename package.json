@@ -1,0 +1,17 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "ui and backend for chat web app",
+  "main": "index.js",
+  "author": "qluan",
+  "license": "MIT",
+  "private": true,
+  "workspaces":[
+    "app"
+  ],
+  "scripts": {
+    "dev": "yarn --cwd ./app dev",
+    "build": "yarn --cwd ./app build",
+    "preview": "yarn --cwd ./app preview"
+  }
+}

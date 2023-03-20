@@ -23,9 +23,11 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
   },
   bottom: {
-    position: 'absolute',
-    bottom: theme.spacing(1),
+    height: '100%',
     width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-end'
   },
   drawerPaper: {
     width: drawerWidth,

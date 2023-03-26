@@ -1,6 +1,7 @@
 const { Configuration, OpenAIApi } = require('openai');
 
-const OPENAI_MODEL = 'gpt-3.5-turbo';
+const OPENAI_CHAT_MODEL = 'gpt-3.5-turbo';
+const OPENAI_MODEL = 'text-davinci-003';
 const OPENAI_MAX_TOKENS = 250;
 const OPENAI_TEMPERATURE = 0.7;
 
@@ -22,7 +23,7 @@ const createOpenaiClient = () => {
       },
       createChatCompletion: async (params) => {
         const response = await openai.createChatCompletion({
-          model: OPENAI_MODEL,
+          model: OPENAI_CHAT_MODEL,
           messages: [
             ...(params.systemMessage || []),
             ...params.messages,

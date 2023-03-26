@@ -1,12 +1,12 @@
 require('dotenv').config();
-
 const express = require("express");
-const axios = require('axios');
 const cors = require('cors');
-const fetch = require('node-fetch');
+const {
+  createOpenaiClient,
+  createCustomizedClient,
+} = require('./clients');
 
-const OPENAI_API_KEY = process.env.CHAT_API_KEY;
-const OPENAI_API_URL = 'https://api.openai.com/v1/chat/completions';
+const client = process.env.CLIENT === 'openai' ? createOpenaiClient() : createCustomizedClient();
 
 const app = express();
 const port = 3000;
@@ -18,48 +18,34 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+app.post('/completion', async (req, res) => {
+  try {
+    const response = await client.createCompletion(req.body);
+    res.status(response.status);
+    res.json(response.data);
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.status);
+      console.log(error.response.data);
+    } else {
+      console.log(error.message);
+    }
+    res.status(500).json({ error: 'Something went wrong.' });
+  }
+});
+
 app.post('/chat', async (req, res) => {
   try {
-    const prompt = req.body.prompt;
-
-    // const response = await axios.post(OPENAI_API_URL, {
-      // message: [
-      //   {
-      //     role: "user",
-      //     content: prompt,
-      //   }
-      // ],
-      // temperature: 0.7,
-      // model: "gpt-3.5-turbo",
-    // }, {
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Authorization': `Bearer ${OPENAI_API_KEY}`
-    //   }
-    // });
-    // const result = response.data.choices[0].text.trim();
-    const response = await fetch(OPENAI_API_URL, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-type': 'application/json',
-        'Authorization': `Bearer ${OPENAI_API_KEY}`
-      },
-      body: JSON.stringify({
-        messages: [
-          {
-            role: "user",
-            content: prompt,
-          }
-        ],
-        temperature: 0.7,
-        model: "gpt-3.5-turbo",
-      })
-    })
+    const response = await client.createChatCompletion(req.body);
     res.status(response.status);
-    response.body.pipe(res);
+    res.json(response.data);
   } catch (error) {
-    console.error(error);
+    if (error.response) {
+      console.log(error.response.status);
+      console.log(error.response.data);
+    } else {
+      console.log(error.message);
+    }
     res.status(500).json({ error: 'Something went wrong.' });
   }
 });

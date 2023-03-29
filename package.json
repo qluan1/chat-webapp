@@ -7,11 +7,13 @@
   "license": "MIT",
   "private": true,
   "workspaces":[
-    "app"
+    "app",
+    "backend"
   ],
   "scripts": {
     "dev": "yarn --cwd ./app dev",
     "build": "yarn --cwd ./app build",
-    "preview": "yarn --cwd ./app preview"
+    "preview": "yarn --cwd ./app preview",
+    "dev-backend": "yarn --cwd ./backend dev"
   }
 }

@@ -1,1 +1,1 @@
-export { ConversationsContext, ConversationsProvider } from "./conversationsContext";
+export { ConversationsContext, ConversationsProvider } from "./ConversationsContext";

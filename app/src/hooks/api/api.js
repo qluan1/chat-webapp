@@ -1,4 +1,4 @@
-const url = 'http://locahost:3000/chat';
+const url = 'http://localhost:3000/chat';
 
 export const getChatReply = async (systemMessage, messages) => {
   const arr = {};
@@ -9,7 +9,7 @@ export const getChatReply = async (systemMessage, messages) => {
     }];
   }
   arr.messages = messages;
-  response = await fetch(
+  const response = await fetch(
     url,
     {
       method: 'POST',

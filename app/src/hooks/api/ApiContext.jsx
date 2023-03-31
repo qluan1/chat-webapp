@@ -5,7 +5,7 @@ import { getChatReply } from './api';
 export const ApiContext = createContext({
   isLoading: false,
   error: null,
-  response: null,
+  getReply: () => {},
 });
 
 export const ApiProvider = ({ children }) => {
@@ -15,19 +15,20 @@ export const ApiProvider = ({ children }) => {
     cur,
     setCur,
     systemMessage,
-    setSystemMessage,
   } = useContext(ConversationsContext);
 
   const getReply = async (message) => {
+    const messages = [...cur, { role: 'user', content: message }];
     setCur(ls => [...ls, { role: 'user', content: message }]);
     setIsLoading(true);
     setError(null);
     try {
-      const response = await getChatReply(systemMessage, cur);
+      const response = await getChatReply(systemMessage, messages);
       if (response.status < 200 || response.status >= 300) {
         throw new Error(`Error ${response.status}: ${response.statusText}`);
       }
       const data = await response.json();
+      console.log(data.choices[0].message);
       setCur(ls => [...ls, { ...data.choices[0].message }]);
       setIsLoading(false);
     } catch (error) {
@@ -43,7 +44,6 @@ export const ApiProvider = ({ children }) => {
       value={{
         isLoading,
         error,
-        response,
         getReply,
       }}
     >

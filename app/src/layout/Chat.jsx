@@ -1,5 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
+import { ChatContainer } from '../components/chat/';
+import { InputBox } from '../components/input/';
 
 const useStyles = makeStyles({
   container: {
@@ -23,8 +25,10 @@ export const Chat = () => {
   return (
     <div className={classes.container}>
       <div className={classes.body}>
+        <ChatContainer />
       </div>
       <div className={classes.footer}>
+        <InputBox />
       </div>
     </div>
   );

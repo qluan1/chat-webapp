@@ -1,13 +1,15 @@
-import { useState, useContext } from 'react';
-import { ConversationsContext } from './conversationsContext';
+import React, { useState, useContext } from 'react';
+import { ConversationsContext } from './ConversationsContext';
 import { saveConversationsToLocalStorage } from './io';
 
 export const useConversations = () => {
-  const { conversations, setConversations } = useContext(ConversationsContext);
-  const [curId, setCurId] = useContext(0);
-
+  const { conversations, setConversations, cur, setCur, systemMessage, setSystemMessage } = useContext(ConversationsContext);
   return {
+    systemMessage,
+    setSystemMessage,
     conversations,
-    curId,
+    setConversations,
+    cur,
+    setCur
   };
 }

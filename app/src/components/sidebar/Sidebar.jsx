@@ -14,9 +14,6 @@ import { ChatThemeContext } from '../../theme';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
@@ -39,11 +36,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Sidebar( { children } ) {
+export default function Sidebar() {
   const classes = useStyles();
   const { theme, toggleTheme } = useContext(ChatThemeContext);
   return (
-    <div className={classes.root}>
+    <div>
       <CssBaseline />
       <Drawer
         className={classes.drawer}
@@ -75,9 +72,6 @@ export default function Sidebar( { children } ) {
           </List>
         </div>
       </Drawer>
-      <main className={classes.content}>
-        { children }
-      </main>
     </div>
   );
 }

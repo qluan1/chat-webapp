@@ -1,6 +1,6 @@
 import React, { useState, createContext } from 'react';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { initTheme, toggleTheme } from './theme';
+import { initTheme, toggleTheme, getInitTheme } from './theme';
 
 export const ChatThemeContext = createContext({
   theme: initTheme,
@@ -8,7 +8,7 @@ export const ChatThemeContext = createContext({
 });
 
 export const ChatThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(initTheme);
+  const [theme, setTheme] = useState(getInitTheme());
   return (
     <ChatThemeContext.Provider
       value = {{

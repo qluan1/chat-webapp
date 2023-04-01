@@ -11,7 +11,7 @@ import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import Brightness2Icon from '@material-ui/icons/Brightness2';
 import { ChatThemeContext } from '../../theme';
 
-const drawerWidth = 240;
+export const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   drawer: {

@@ -2,10 +2,16 @@ import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { ChatContainer } from '../components/chat/';
 import { InputBox } from '../components/input/';
+import { drawerWidth } from '../components/sidebar/Sidebar';
 
-const useStyles = makeStyles({
+const InputBoxHeight = '150px';
+
+const useStyles = makeStyles((theme) => ({
   container: {
-    height: '100%',
+    boxSizing: 'border-box',
+    padding: `0 0 ${InputBoxHeight} 0`,
+    backgroundColor: theme.palette.background.alt,
+    minHeight: '100vh',
     flex: 1,
     display: 'flex',
     flexDirection: 'column',
@@ -13,12 +19,15 @@ const useStyles = makeStyles({
     flexGrow: 1,
   },
   body: {
-    height: '80%',
+    backgroundColor: theme.palette.background.alt2,
   },
   footer: {
-    height: '20%',
+    position: 'fixed',
+    bottom: '15px',
+    width: `calc(100% - ${drawerWidth}px)`,
+    height: InputBoxHeight,
   }
-});
+}));
 
 export const Chat = () => {
   const classes = useStyles();

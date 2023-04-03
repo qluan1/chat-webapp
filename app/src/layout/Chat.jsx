@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'stretch',
     flexGrow: 1,
+    overflow: 'auto',
   },
   body: {
     backgroundColor: theme.palette.background.alt2,
@@ -31,14 +32,15 @@ const useStyles = makeStyles((theme) => ({
 
 export const Chat = () => {
   const classes = useStyles();
+
   return (
     <div className={classes.container}>
-      <div className={classes.body}>
-        <ChatContainer />
-      </div>
-      <div className={classes.footer}>
-        <InputBox />
-      </div>
+        <div className={classes.body}>
+          <ChatContainer />
+        </div>
+        <div className={classes.footer}>
+          <InputBox />
+        </div>
     </div>
   );
 }

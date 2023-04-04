@@ -6,14 +6,18 @@
   "author": "qluan",
   "license": "MIT",
   "private": true,
-  "workspaces":[
+  "workspaces": [
     "app",
     "backend"
   ],
   "scripts": {
     "dev": "yarn --cwd ./app dev",
+    "dev-all": "concurrently \"yarn --cwd ./app dev\" \"yarn --cwd ./backend dev\"",
     "build": "yarn --cwd ./app build",
     "preview": "yarn --cwd ./app preview",
     "dev-backend": "yarn --cwd ./backend dev"
+  },
+  "dependencies": {
+    "concurrently": "^8.0.1"
   }
 }

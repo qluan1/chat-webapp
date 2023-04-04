@@ -2,7 +2,7 @@ const { Configuration, OpenAIApi } = require('openai');
 
 const OPENAI_CHAT_MODEL = 'gpt-3.5-turbo';
 const OPENAI_MODEL = 'text-davinci-003';
-const OPENAI_MAX_TOKENS = 250;
+const OPENAI_MAX_TOKENS = 420;
 const OPENAI_TEMPERATURE = 0.7;
 
 const createOpenaiClient = () => {
@@ -19,6 +19,10 @@ const createOpenaiClient = () => {
           max_tokens: OPENAI_MAX_TOKENS,
           temperature: OPENAI_TEMPERATURE,
         });
+        const data = {
+          message: { ...response.data.choices[0].message }
+        }
+        response.data = data;
         return response;
       },
       createChatCompletion: async (params) => {
@@ -31,6 +35,10 @@ const createOpenaiClient = () => {
           max_tokens: OPENAI_MAX_TOKENS,
           temperature: OPENAI_TEMPERATURE,
         });
+        const data = {
+          message: { ...response.data.choices[0].message }
+        }
+        response.data = data;
         return response;
       },
     };

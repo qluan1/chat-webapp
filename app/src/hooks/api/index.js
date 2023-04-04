@@ -1,1 +1,2 @@
-export { ApiContext, ApiProvider } from './ApiContext';
+export { ApiContext } from './ApiContext';
+export { ApiProvider } from './ApiProvider';

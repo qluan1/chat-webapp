@@ -16,6 +16,7 @@ export const ChatContainer = () => {
                 key={index}
                 message={item}
                 typeAnimation={index === cur.length - 1 && item.role === 'assistant' && !item.read} 
+                autoScroll={index === cur.length - 1 && item.role === 'assistant' && !item.read}
                 messageIndex={index}
               />
             ))}
@@ -34,7 +35,7 @@ export const ChatContainer = () => {
             }
             {
               isLoading && (
-                <ChatBody message={{ role: 'assistant', content: 'Loading...' }} />
+                <ChatBody message={{ role: 'assistant', content: 'Loading...' }} autoScroll />
               )
             }
           </>)

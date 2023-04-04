@@ -22,6 +22,7 @@ export const ChatBody = (
   {
     message,
     typeAnimation = false,
+    autoScroll = false,
     messageIndex,
   }
 ) => {
@@ -60,7 +61,7 @@ export const ChatBody = (
   }, [text]);
 
   useEffect(() => {
-    messageRef.current?.scrollIntoView({ behavior: 'smooth' });
+    autoScroll && messageRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [divHeight]);
 
   return (

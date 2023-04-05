@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { ChatContainer } from '../components/chat/';
-import { InputBox } from '../components/input/';
-import { drawerWidth } from '../components/sidebar/Sidebar';
+import { Conversations } from '../components/Conversations';
+import { InputBox } from '../components/Input';
+import { drawerWidth } from '../components/Sidebar';
 
 const InputBoxHeight = '150px';
 
@@ -30,13 +30,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export const Chat = () => {
+export const Content = () => {
   const classes = useStyles();
 
   return (
     <div className={classes.container}>
         <div className={classes.body}>
-          <ChatContainer />
+          <Conversations />
         </div>
         <div className={classes.footer}>
           <InputBox />

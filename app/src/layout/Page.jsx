@@ -1,5 +1,5 @@
 import React from 'react';
-import { Chat } from './Chat';
+import { Content } from './Content';
 import { Sidebar } from '../components/sidebar';
 import { makeStyles } from '@material-ui/styles';
 
@@ -18,7 +18,7 @@ export const Page = () => {
   return (
     <div className={classes.root}>
       <Sidebar />
-      <Chat />
+      <Content />
     </div>
   )
 };

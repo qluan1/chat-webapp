@@ -1,9 +1,9 @@
-import React, { useContext, useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import ComputerIcon from '@material-ui/icons/Computer';
-import { ApiContext } from '../../hooks/api/ApiContext';
+import { useApi } from '../../hooks/api';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export const ChatBody = (
+export const Message = (
   {
     message,
     typeAnimation = false,
@@ -28,7 +28,7 @@ export const ChatBody = (
 ) => {
   const classes = useStyles();
   const [text, setText] = useState('');
-  const { setMessageRead } = useContext(ApiContext);
+  const { setMessageRead } = useApi();
   const [divHeight, setDivHeight] = useState(0);
   const messageRef = useRef(null);
 

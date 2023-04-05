@@ -1,1 +1,2 @@
-export { ChatThemeContext, ChatThemeProvider } from './ChatThemeProvider';
+export { ThemeContext } from './ThemeContext';
+export { ThemeProvider } from './ThemeProvider';

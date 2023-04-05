@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { ApiContext } from '../../hooks/api';
+import { useApi } from '../../hooks/api';
 import {
   IconButton,
   TextField,
@@ -24,7 +24,7 @@ export const InputBox = () => {
     isLoading,
     error,
     getReply
-  } = useContext(ApiContext);
+  } = useApi();
   const classes = useStyle();
   const [input, setInput] = useState('');
   const handleButtonClick = () => {
@@ -43,13 +43,15 @@ export const InputBox = () => {
       <Grid item xs={12}>
         <TextField
           id="input"
-          variant="filled"
+          variant="outlined"
+          margin="dense"
           value={input}
           onKeyDown={handleKeyDown}
           onChange={e => setInput(e.target.value)}
-          size="medium"
+          size="small"
           multiline
-          minRows={4}
+          maxRows={5}
+          minRows={1}
           fullWidth
           InputProps={{
             endAdornment: (

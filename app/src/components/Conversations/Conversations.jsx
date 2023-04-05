@@ -1,18 +1,18 @@
-import React, { useContext } from 'react';
-import { useConversations } from '../../hooks/conversations/';
-import { ApiContext } from '../../hooks/api';
-import { ChatBody } from './ChatBody';
+import React from 'react';
+import { useConversations } from '../../hooks/conversations';
+import { useApi } from '../../hooks/api';
+import { Message } from './Message';
 import { Container, Button } from '@material-ui/core';
 
-export const ChatContainer = () => {
+export const Conversations = () => {
   const { cur } = useConversations();
-  const { isLoading, error, resend } = useContext(ApiContext);
+  const { isLoading, error, resend } = useApi();
   return (
     <div>
         { cur.length !== 0 && 
           (<>
             {cur.map((item, index) => item.role !== 'system' && (
-              <ChatBody
+              <Message
                 key={index}
                 message={item}
                 typeAnimation={index === cur.length - 1 && item.role === 'assistant' && !item.read} 
@@ -35,7 +35,7 @@ export const ChatContainer = () => {
             }
             {
               isLoading && (
-                <ChatBody message={{ role: 'assistant', content: 'Loading...' }} autoScroll />
+                <Message message={{ role: 'assistant', content: 'Loading...' }} autoScroll />
               )
             }
           </>)

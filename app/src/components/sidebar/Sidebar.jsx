@@ -9,9 +9,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import Brightness2Icon from '@material-ui/icons/Brightness2';
-import { ChatThemeContext } from '../../theme';
-
-export const drawerWidth = 240;
+import { ThemeContext } from '../../theme';
+import { drawerWidth } from './constants';
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -38,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Sidebar() {
   const classes = useStyles();
-  const { theme, toggleTheme } = useContext(ChatThemeContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
   return (
     <div>
       <CssBaseline />
